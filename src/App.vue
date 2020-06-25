@@ -13,6 +13,11 @@ import MenuDeTopo from "./components/MenuDeTopo";
 //   baseURL: "https://api.github.com/users/leotabosa/repos",
 // });
 export default {
+  page: {
+    meta: {
+      title: "Ok",
+    },
+  },
   components: {
     MenuDeTopo,
   },
