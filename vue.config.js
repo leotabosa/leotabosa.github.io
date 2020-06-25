@@ -3,7 +3,7 @@ module.exports = {
   // make sure to do this only in production.
   chainWebpack: (config) => {
     config.plugin("html").tap((opts) => {
-      opts[0].template = "./index.html";
+      opts[0].filename = "./index.html";
       return opts;
     });
   },
