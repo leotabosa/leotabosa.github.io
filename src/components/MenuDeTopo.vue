@@ -1,10 +1,10 @@
 <template>
   <div class="header">
-    <span class="label">COVID19 no Ceará</span>
+    <span class="label">Leonardo Braga</span>
   </div>
 </template>
 <script>
-export default {}
+export default {};
 </script>
 
 <style scoped>

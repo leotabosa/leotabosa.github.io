@@ -2,7 +2,6 @@
   <div class="container">
     <MenuDeTopo />
 
-    />
     <div class="corpo"></div>
   </div>
 </template>
