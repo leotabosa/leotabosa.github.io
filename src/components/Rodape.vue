@@ -10,6 +10,8 @@
 
 <style scoped lang="scss">
 .rodape {
+  position: absolute;
+  bottom: 0;
   width: 100%;
   height: 200px;
   background-color: #3a477d;

@@ -52,14 +52,14 @@ export default {
       if (window.scrollY > 20) {
         this.mostrarVerMais = false;
       }
-      if (window.scrollY < 560 && this.podeVoltarALanding) {
+      if (window.scrollY < window.innerHeight && this.podeVoltarALanding) {
         this.podeVoltarALanding = false;
         this.show = false;
         this.mostrarLanding = true;
         this.voltarAoTopo = false;
       }
 
-      if (window.scrollY > 500) {
+      if (window.scrollY > window.innerHeight) {
         this.show = true;
         this.podeVoltarALanding = true;
         if (!this.mostrarLanding) {
@@ -86,9 +86,10 @@ export default {
 
 <template>
   <div ref="container" class="container">
-    <transition name="show">
+    <transition name="fade">
       <MenuDeTopo v-if="show" />
     </transition>
+
     <LandingPage
       id="landingPage"
       :mostrar-ver-mais="mostrarVerMais"
@@ -101,49 +102,53 @@ export default {
         <SetaBaixo />
       </span>
     </transition>
-    <div :class="`corpo ${mostrarLanding && !voltarAoTopo ? '' : 'sobeCorpo'}`">
-      <Abas />
-    </div>
-    <Rodape v-if="!mostrarLanding" />
+    <transition name="body">
+      <div
+        v-if="!mostrarLanding"
+        :class="`corpo ${mostrarLanding && !voltarAoTopo ? '' : 'sobeCorpo'}`"
+      >
+        <Abas />
+      </div>
+    </transition>
+    <transition name="rodape">
+      <Rodape v-if="!mostrarLanding" />
+    </transition>
   </div>
 </template>
 
 <style scoped lang="scss">
-.show-enter-active {
-  animation: 0.2s linear;
+.body-enter-active {
+  animation: 1.15s ease;
   animation-name: show;
-  z-index: 2;
 
   @keyframes show {
     0% {
-      transform: translateY(-100px);
-      z-index: 0;
+      transform: translateY(0);
     }
     100% {
-      transform: translateY(0);
-      z-index: 2;
+      transform: translateY(calc(-100vh + 20px));
     }
   }
 }
 
-.show-leave-active {
-  animation: 0.2s linear;
+.body-leave-active {
+  animation: 1.05s ease;
   animation-name: hide;
 
   @keyframes hide {
     0% {
-      transform: translateY(0);
+      transform: translateY(calc(-100vh + 20px));
     }
     100% {
-      transform: translateY(-100px);
+      transform: translateY(0);
     }
   }
 }
 
-.show-enter {
+.body-enter {
   opacity: 0.6;
 }
-.show-leave-to {
+.body-leave-to {
   opacity: 1;
 }
 
@@ -156,8 +161,19 @@ export default {
   opacity: 0;
 }
 
+.rodape-leave-active {
+  transition: opacity 0.2s ease;
+}
+.rodape-enter-active {
+  transition: opacity 0.5s ease 0.7s;
+}
+.rodape-enter,
+.rodape-leave-to {
+  opacity: 0;
+}
+
 .container {
-  height: 100%;
+  height: calc(100vh + 1px);
   position: relative;
   width: 100%;
   display: flex;
@@ -174,8 +190,7 @@ export default {
   }
 
   .sobeCorpo {
-    transform: translateY(-600px);
-    transition: 1s ease;
+    padding-top: 50px;
   }
 
   .voltarAoTopo {
@@ -187,6 +202,7 @@ export default {
     border-radius: 100%;
     box-shadow: 1px 3px 4px rgba(0, 0, 0, 0.5);
     cursor: pointer;
+    z-index: 2;
 
     svg {
       transform: rotate(180deg);

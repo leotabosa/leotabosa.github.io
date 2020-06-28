@@ -14,7 +14,11 @@ export default {
       <GitHubLogo
         @click.native="abrirEmNovaAba('https://github.com/leotabosa')"
       />
-      <LinkedInLogo />
+      <LinkedInLogo
+        @click.native="
+          abrirEmNovaAba('https://www.linkedin.com/in/leonardo-tabosa/')
+        "
+      />
     </span>
   </div>
 </template>
@@ -30,7 +34,6 @@ export default {
   padding: 15px;
   width: calc(100% - 30px);
   background-color: #3a477d;
-  z-index: 2;
 
   .label {
     color: white;

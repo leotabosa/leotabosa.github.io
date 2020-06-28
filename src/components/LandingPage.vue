@@ -20,6 +20,17 @@ export default {
       default: false,
     },
   },
+  data() {
+    return {
+      naoMostrar: false,
+    };
+  },
+  watch: {
+    mostrarLanding(val) {
+      if (!val) this.naoMostrar = true;
+      else this.naoMostrar = false;
+    },
+  },
   methods: {
     abrirEmNovaAba,
   },
@@ -27,45 +38,83 @@ export default {
 </script>
 
 <template>
-  <div :class="`landingPage ${mostrarLanding ? '' : 'naoMostra'}`">
-    <div class="linkGithub">
-      <span
-        class="link"
-        @click="abrirEmNovaAba('https://github.com/leotabosa')"
-      >
-        GitHub
-        <LinkExterno />
-      </span>
-    </div>
-    <div class="ilustracaoEInfo">
-      <IlustracaoPaginaInicial />
-      <div class="infos">
-        <div class="titulo">Leonardo Braga</div>
-        <span class="subtitulo">
-          Desenvolvedor front-end e estudante de Ciências da Computação
+  <transition-group name="body" tag="p">
+    <div v-if="!naoMostrar" :key="1" class="landingPage">
+      <div class="linkGithub">
+        <span
+          class="link"
+          @click="abrirEmNovaAba('https://github.com/leotabosa')"
+        >
+          GitHub
+          <LinkExterno />
         </span>
       </div>
-    </div>
-    <div class="rodape">
-      <div
-        :class="`botaoVerMais ${mostrarVerMais ? '' : 'esconderBotao'}`"
-        @click="$emit('ver-mais')"
-      >
-        <div class="seta">
-          <SetaBaixo />
+      <div class="ilustracaoEInfo">
+        <IlustracaoPaginaInicial />
+        <div class="infos">
+          <div class="titulo">Leonardo Braga</div>
+          <span class="subtitulo">
+            Desenvolvedor front-end e estudante de Ciências da Computação
+          </span>
         </div>
-        Ver mais
+      </div>
+      <div class="rodape">
+        <div
+          :class="`botaoVerMais ${mostrarVerMais ? '' : 'esconderBotao'}`"
+          @click="$emit('ver-mais')"
+        >
+          <div class="seta">
+            <SetaBaixo />
+          </div>
+          Ver mais
+        </div>
       </div>
     </div>
-  </div>
+  </transition-group>
 </template>
 
 <style scoped lang="scss">
+.body-enter-active {
+  animation: 1.15s ease;
+  animation-name: show;
+
+  @keyframes show {
+    0% {
+      transform: translateY(-100vh);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+}
+
+.body-leave-active {
+  animation: 1.15s ease;
+  animation-name: hide;
+
+  @keyframes hide {
+    0% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(-100vh);
+    }
+  }
+}
+
+.body-enter {
+  opacity: 0.6;
+}
+.body-leave-to {
+  opacity: 1;
+}
 .landingPage {
   height: fit-content;
   width: 100%;
+  margin-top: -20px;
+  height: calc(100vh + 2px);
   background-color: #9db8d6;
-  transition: 1s ease;
+  z-index: 2;
 
   .linkGithub {
     display: flex;
@@ -87,6 +136,13 @@ export default {
   .ilustracaoEInfo {
     display: flex;
     align-items: center;
+    height: 75%;
+
+    svg {
+      height: 60%;
+      width: 60%;
+    }
+
     .infos {
       display: flex;
       flex-direction: column;
@@ -139,10 +195,5 @@ export default {
       cursor: default;
     }
   }
-}
-
-.naoMostra {
-  transform: translateY(-650px);
-  transition: 1s ease;
 }
 </style>
