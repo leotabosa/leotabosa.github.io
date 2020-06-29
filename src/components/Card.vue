@@ -13,7 +13,8 @@ export default {
     abrirEmNovaAba,
     dataAtualizacao(data) {
       const dia = "0" + new Date(data).getDate();
-      const mes = "0" + new Date(data).getMonth();
+      let mes = new Date(data).getMonth();
+      mes = "0" + String(Number(mes) + 1);
       const ano = new Date(data).getFullYear();
 
       return `${dia.slice(-2)}/${mes.slice(-2)}/${ano}`;
@@ -62,8 +63,8 @@ export default {
     width: 94%;
     padding: 1rem 0;
     margin-left: 3%;
-    border-bottom: 1px solid lightgrey;
-    color: #3a477d;
+    border-bottom: 1px solid var(--cor-borda);
+    color: var(--cor-principal);
 
     .titulo {
       font-size: 16px;
@@ -86,11 +87,11 @@ export default {
     margin-left: 3%;
     padding-top: 1rem;
     .labelInfo {
-      color: #bbc0c4;
+      color: var(--texto-secundario);
     }
 
     .info {
-      color: #666;
+      color: var(--texto-principal);
     }
   }
 

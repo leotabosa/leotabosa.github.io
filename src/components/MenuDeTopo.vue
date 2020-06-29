@@ -33,17 +33,13 @@ export default {
   height: 30px;
   padding: 15px;
   width: calc(100% - 30px);
-  background-color: #3a477d;
+  background-color: var(--cor-principal);
 
   .label {
     color: white;
     user-select: none;
     font-weight: bold;
     font-size: 1.3rem;
-
-    &:hover {
-      background-image: black;
-    }
   }
 
   .links {

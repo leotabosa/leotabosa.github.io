@@ -20,7 +20,7 @@
   width: 100%;
   height: 100%;
   border-radius: 100%;
-  background-color: #3a477d;
+  background-color: var(--cor-principal);
   opacity: 0.6;
   animation: doBounce 2s infinite ease-in-out;
 }

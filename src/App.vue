@@ -2,14 +2,14 @@
 import MenuDeTopo from "./components/MenuDeTopo";
 import LandingPage from "./components/LandingPage";
 import Abas from "./views/Abas";
-import SetaBaixo from "./assets/SetaBaixo";
+import Seta from "./assets/Seta";
 import Rodape from "./components/Rodape";
 
 export default {
   components: {
     MenuDeTopo,
     LandingPage,
-    SetaBaixo,
+    Seta,
     Abas,
     Rodape,
   },
@@ -27,8 +27,8 @@ export default {
     window.addEventListener("scroll", this.mostraOuNaoHeader);
   },
   destroyed() {
-    window.removeEventListener("mousewheel");
-    window.removeEventListener("scroll");
+    window.removeEventListener("mousewheel", this.mostraOuNaoHeader);
+    window.removeEventListener("scroll", this.mostraOuNaoHeader);
   },
   methods: {
     // gerarQRCode(texto) {
@@ -46,20 +46,22 @@ export default {
     // },
 
     mostraOuNaoHeader() {
-      if (window.scrollY <= 20) {
+      const posicaoY = window.scrollY;
+
+      if (posicaoY <= 20) {
         this.mostrarVerMais = true;
       }
-      if (window.scrollY > 20) {
+      if (posicaoY > 20) {
         this.mostrarVerMais = false;
       }
-      if (window.scrollY < window.innerHeight && this.podeVoltarALanding) {
+      if (posicaoY < window.innerHeight && this.podeVoltarALanding) {
         this.podeVoltarALanding = false;
         this.show = false;
         this.mostrarLanding = true;
         this.voltarAoTopo = false;
       }
 
-      if (window.scrollY > window.innerHeight) {
+      if (posicaoY > window.innerHeight) {
         this.show = true;
         this.podeVoltarALanding = true;
         if (!this.mostrarLanding) {
@@ -85,7 +87,7 @@ export default {
 </script>
 
 <template>
-  <div ref="container" class="container">
+  <div id="container" ref="container" class="container">
     <transition name="fade">
       <MenuDeTopo v-if="show" />
     </transition>
@@ -99,7 +101,7 @@ export default {
 
     <transition name="fade">
       <span v-if="voltarAoTopo" class="voltarAoTopo" @click="scrollTopo">
-        <SetaBaixo />
+        <Seta />
       </span>
     </transition>
     <transition name="body">
@@ -110,9 +112,9 @@ export default {
         <Abas />
       </div>
     </transition>
-    <transition name="rodape">
+    <!-- <transition name="rodape">
       <Rodape v-if="!mostrarLanding" />
-    </transition>
+    </transition> -->
   </div>
 </template>
 
@@ -177,6 +179,7 @@ export default {
   position: relative;
   width: 100%;
   display: flex;
+  overflow-y: scroll;
   flex-direction: column;
   font-family: -apple-system, BlinkMacSystemFont, "Raleway", "Segoe UI", Roboto,
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
@@ -186,6 +189,7 @@ export default {
     flex-wrap: wrap;
     justify-content: center;
     width: 100%;
+
     transition: 1s ease;
   }
 
@@ -194,6 +198,7 @@ export default {
   }
 
   .voltarAoTopo {
+    will-change: background-color;
     position: fixed;
     bottom: 30px;
     right: 30px;
@@ -203,6 +208,7 @@ export default {
     box-shadow: 1px 3px 4px rgba(0, 0, 0, 0.5);
     cursor: pointer;
     z-index: 2;
+    transition: background-color 0.2s ease;
 
     svg {
       transform: rotate(180deg);
@@ -219,7 +225,7 @@ export default {
         left: -115px;
         height: 30px;
         width: 110px;
-        animation: 1s ease;
+        animation: 0.7s ease;
         animation-name: easeLeft;
         color: #3a477d;
 

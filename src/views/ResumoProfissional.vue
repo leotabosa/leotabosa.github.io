@@ -1,15 +1,20 @@
 <script>
+import Tooltip from "../components/Tooltip";
+import IconeGraduacao from "../assets/IconeGraduacao";
 export default {
+  components: { Tooltip, IconeGraduacao },
   data() {
     return {
       experiencias: [
         {
           empresa: "Grupo Casa Magalhães",
           tempo: "Julho de 2019 - Hoje",
+          atual: true,
           tags: [
             { nome: "Vue.js", cor: "#4BB37E" },
             { nome: "HTML", cor: "#DD4C27" },
             { nome: "JavaScript", cor: "#D0B531" },
+            { nome: "CSS", cor: "#48A4DA" },
             { nome: "Webpack" },
             { nome: "Material Design" },
             { nome: "Element UI" },
@@ -44,7 +49,10 @@ export default {
   <div class="wrapper">
     <ul>
       <li v-for="(item, index) in experiencias" :key="index" class="item">
-        <span class="titulo">{{ item.empresa }}</span>
+        <span class="titulo"
+          >{{ item.empresa
+          }}<Tooltip v-if="item.atual" icone="empresa" texto="Empresa atual" />
+        </span>
         <section class="corpo">
           <span class="labelInfo">
             Tempo: <span class="info">{{ item.tempo }}</span>
@@ -72,11 +80,16 @@ export default {
     </ul>
     <div class="separador" />
     <div class="educacao">
-      <div class="titulo">Educação</div>
+      <div class="titulo">
+        Educação<span class="iconeGraduacao"><IconeGraduacao /></span>
+      </div>
       <div v-for="(curso, indexador) in educacao" :key="indexador">
         <span class="curso">
           <span>
             Curso: <span class="info">{{ curso.curso }}</span>
+          </span>
+          <span>
+            Grau: <span class="info">{{ curso.grau }}</span>
           </span>
           <span>
             Instituição:
@@ -98,7 +111,6 @@ export default {
   flex-direction: column;
   flex-wrap: wrap;
   width: 100%;
-  height: fit-content;
   align-self: center;
 
   .item {
@@ -108,13 +120,13 @@ export default {
     width: calc(100vw - 90px);
     padding-bottom: 1.2rem;
     &:not(:last-child) {
-      border-bottom: 1px solid #daecf7;
+      border-bottom: 1px solid var(--cor-borda);
     }
 
     .titulo {
       font-size: 20px;
       font-weight: bold;
-      color: #555;
+      color: var(--texto-titulo);
       padding-bottom: 0.4rem;
     }
 
@@ -124,21 +136,21 @@ export default {
       margin-left: 20px;
       .labelInfo {
         font-size: 16px;
-        color: #bbc0c4;
+        color: var(--texto-secundario);
 
         .info {
-          color: #666;
+          color: var(--texto-principal);
         }
       }
 
       .descricao {
         font-size: 16px;
         padding: 0.8rem 0;
-        color: #666;
+        color: var(--texto-principal);
       }
 
       .projeto {
-        color: #666;
+        color: var(--texto-principal);
         padding-top: 0.5rem;
         margin-left: 30px;
         .nomeProjeto {
@@ -150,7 +162,7 @@ export default {
       display: flex;
       align-items: center;
       justify-content: flex-end;
-      color: #bbc0c4;
+      color: var(--texto-secundario);
       padding-top: 1rem;
       font-size: 12px;
       .tag {
@@ -162,7 +174,7 @@ export default {
   .separador {
     width: 98%;
     height: 1px;
-    background-color: #daecf7;
+    background-color: var(--cor-borda);
     margin-bottom: 2rem;
     align-self: center;
   }
@@ -173,24 +185,30 @@ export default {
     .titulo {
       font-size: 20px;
       font-weight: bold;
-      color: #555;
+      color: var(--texto-titulo);
       padding-bottom: 0.4rem;
+
+      svg {
+        width: 20px;
+        height: 20px;
+        margin-left: 5px;
+      }
     }
     .curso {
       display: flex;
       flex-direction: column;
       margin-left: 20px;
-      color: #bbc0c4;
+      color: var(--texto-secundario);
 
       &:not(:last-child) {
-        border-bottom: 1px solid #daecf7;
+        border-bottom: 1px solid var(--cor-borda);
       }
 
       span {
         margin-bottom: 0.6rem;
       }
       .info {
-        color: #666;
+        color: var(--texto-principal);
       }
     }
   }

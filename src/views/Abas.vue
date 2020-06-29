@@ -2,13 +2,23 @@
 import Repositorios from "./Repositorios";
 import ResumoProfissional from "./ResumoProfissional";
 import Tecnologias from "./Tecnologias";
+import Curriculo from "../assets/Curriculo";
+import IconeTech from "../assets/IconeTech";
+import IconeRepo from "../assets/IconeRepo";
 import Axios from "axios";
 const axios = Axios.create({
   baseURL: "https://api.github.com/users/leotabosa/repos",
 });
 
 export default {
-  components: { Repositorios, ResumoProfissional, Tecnologias },
+  components: {
+    Repositorios,
+    ResumoProfissional,
+    Tecnologias,
+    Curriculo,
+    IconeTech,
+    IconeRepo,
+  },
   data() {
     return {
       opcoesAba: ["Resumo profissional", "Tecnologias", "Repositórios"],
@@ -29,7 +39,7 @@ export default {
           this.erro = err;
           if (err === "Network Error") alert("Erro de conexão.");
         });
-        this.repositorios = data;
+        this.repositorios = data.filter((item) => !item.fork);
         this.carregando = false;
       }
     },
@@ -50,6 +60,9 @@ export default {
         :class="`aba ${selecionada === item ? 'selecionada' : ''}`"
         @click="mudaAba(item)"
       >
+        <Curriculo v-if="item === 'Resumo profissional'" />
+        <IconeTech v-if="item === 'Tecnologias'" />
+        <IconeRepo v-if="item === 'Repositórios'" />
         {{ item }}
       </div>
     </div>
@@ -79,16 +92,18 @@ export default {
 
 .wrapper {
   width: 100%;
+  height: fit-content;
 
   .abas {
     display: flex;
     height: 100px;
     user-select: none;
     padding-bottom: 2rem;
-    border-bottom: 1px solid #daecf7;
+    border-bottom: 1px solid var(--cor-borda);
 
     .aba {
       display: inherit;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
       flex: 1;
@@ -100,18 +115,31 @@ export default {
       font-size: 18px;
 
       &:nth-child(2) {
-        border-right: 1px solid #daecf7;
-        border-left: 1px solid #dbecf7;
+        border-right: 1px solid var(--cor-borda);
+        border-left: 1px solid var(--cor-borda);
       }
 
       &:hover {
         color: #5f99b7;
+      }
+
+      svg {
+        width: 40px;
+        height: 40px;
+        padding-bottom: 10px;
+        fill: #3a477b;
       }
     }
 
     .selecionada {
       transition: 0.2s ease;
       font-weight: bold;
+
+      &::after {
+        position: absolute;
+        content: "";
+        background-color: var(--cor-principal);
+      }
     }
   }
 }

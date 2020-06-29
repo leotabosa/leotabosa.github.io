@@ -1,13 +1,13 @@
 <script>
 import IlustracaoPaginaInicial from "../assets/IlustracaoPaginaInicial";
-import SetaBaixo from "../assets/SetaBaixo";
+import Seta from "../assets/Seta";
 import LinkExterno from "../assets/LinkExterno";
 import abrirEmNovaAba from "../utils/abrir-em-nova-aba";
 
 export default {
   components: {
     IlustracaoPaginaInicial,
-    SetaBaixo,
+    Seta,
     LinkExterno,
   },
   props: {
@@ -64,7 +64,7 @@ export default {
           @click="$emit('ver-mais')"
         >
           <div class="seta">
-            <SetaBaixo />
+            <Seta />
           </div>
           Ver mais
         </div>
@@ -113,7 +113,7 @@ export default {
   width: 100%;
   margin-top: -20px;
   height: calc(100vh + 2px);
-  background-color: #9db8d6;
+  background-color: var(--cor-secundaria);
   z-index: 2;
 
   .linkGithub {
@@ -121,7 +121,7 @@ export default {
     justify-content: flex-end;
     align-items: center;
     padding: 1.5rem 2rem 2rem 0;
-    color: #3a477d;
+    color: var(--cor-principal);
     .link {
       display: inherit;
       cursor: pointer;
@@ -146,13 +146,13 @@ export default {
     .infos {
       display: flex;
       flex-direction: column;
-      color: #3a477d;
+      color: var(--cor-principal);
 
       .titulo {
         font-size: 30px;
         font-weight: bold;
         padding-bottom: 0.4rem;
-        border-bottom: 1px solid #5f99b7;
+        border-bottom: 1px solid var(--cor-borda-secundaria);
       }
       .subtitulo {
         padding-top: 0.4rem;
@@ -168,18 +168,22 @@ export default {
     .botaoVerMais {
       display: flex;
       align-items: center;
-      color: #3a477d;
+      color: var(--cor-principal);
       cursor: pointer;
       transition: 0.2s ease;
 
       .seta {
-        background-color: #3a477d;
+        background-color: var(--cor-principal);
         border-radius: 100%;
         width: 20px;
         height: 20px;
         padding: 1rem;
         margin-right: 15px;
         box-shadow: 0.5px 1.5px 3px rgba(0, 0, 0, 0.5);
+
+        svg {
+          fill: white;
+        }
       }
 
       &:hover {
