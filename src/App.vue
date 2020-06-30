@@ -128,7 +128,7 @@ export default {
       transform: translateY(0);
     }
     100% {
-      transform: translateY(calc(-100vh + 20px));
+      transform: translateY(-100vh);
     }
   }
 }
@@ -139,7 +139,7 @@ export default {
 
   @keyframes hide {
     0% {
-      transform: translateY(calc(-100vh + 20px));
+      transform: translateY(-100vh);
     }
     100% {
       transform: translateY(0);
@@ -175,7 +175,7 @@ export default {
 }
 
 .container {
-  height: calc(100vh + 1px);
+  height: 100vh;
   position: relative;
   width: 100%;
   display: flex;
@@ -194,7 +194,7 @@ export default {
   }
 
   .sobeCorpo {
-    padding-top: 50px;
+    padding-top: 60px;
   }
 
   .voltarAoTopo {

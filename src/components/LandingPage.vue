@@ -38,8 +38,12 @@ export default {
 </script>
 
 <template>
-  <transition-group name="body" tag="p">
-    <div v-if="!naoMostrar" :key="1" class="landingPage">
+  <transition-group name="body" tag="span">
+    <div
+      v-if="!naoMostrar"
+      :key="1"
+      :class="`landingPage ${mostrarLanding ? '' : naoMostrar}`"
+    >
       <div class="linkGithub">
         <span
           class="link"
@@ -109,10 +113,8 @@ export default {
   opacity: 1;
 }
 .landingPage {
-  height: fit-content;
+  height: 100vh;
   width: 100%;
-  margin-top: -20px;
-  height: calc(100vh + 2px);
   background-color: var(--cor-secundaria);
   z-index: 2;
 
@@ -199,5 +201,11 @@ export default {
       cursor: default;
     }
   }
+}
+
+.naoMostrar {
+  position: static;
+  width: 100%;
+  height: 100vh;
 }
 </style>
