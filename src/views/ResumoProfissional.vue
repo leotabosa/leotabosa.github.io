@@ -8,6 +8,7 @@ export default {
       experiencias: [
         {
           empresa: "Grupo Casa Magalhães",
+          cargo: "Estagiário",
           tempo: "Julho de 2019 - Hoje",
           atual: true,
           tags: [
@@ -21,7 +22,7 @@ export default {
             { nome: "SASS/SCSS" },
           ],
           descricaoEmpresa:
-            "Empresa cearense bem consolidade de soluções tecnológicas para ajudar companhias a superarem o complexo sistema tributário brasileiro e administrar melhor o negócio.",
+            "Empresa cearense bem consolidada de soluções tecnológicas para ajudar companhias a superarem o complexo sistema tributário brasileiro e administrar melhor o negócio.",
           projetos: [
             {
               nome: "varejofacil",
@@ -51,13 +52,16 @@ export default {
       <li v-for="(item, index) in experiencias" :key="index" class="item">
         <span class="titulo"
           >{{ item.empresa
-          }}<Tooltip v-if="item.atual" icone="empresa" texto="Empresa atual" />
+          }}<Tooltip v-if="item.atual" icone="empresa" texto="Emprego atual" />
         </span>
         <section class="corpo">
+          <span class="descricao">{{ item.descricaoEmpresa }}</span>
+          <span class="labelInfo">
+            Cargo: <span class="info">{{ item.cargo }}</span>
+          </span>
           <span class="labelInfo">
             Tempo: <span class="info">{{ item.tempo }}</span>
           </span>
-          <span class="descricao">{{ item.descricaoEmpresa }}</span>
           <span class="labelInfo">
             Projetos:
             <div v-for="(projeto, i) in item.projetos" :key="i" class="projeto">
@@ -136,6 +140,7 @@ export default {
       margin-left: 20px;
       .labelInfo {
         font-size: 16px;
+        padding: 5px 0;
         color: var(--texto-secundario);
 
         .info {
@@ -205,7 +210,7 @@ export default {
       }
 
       span {
-        margin-bottom: 0.6rem;
+        padding: 5px 0;
       }
       .info {
         color: var(--texto-principal);

@@ -141,8 +141,9 @@ export default {
     height: 75%;
 
     svg {
-      height: 60%;
-      width: 60%;
+      margin-left: -5%;
+      height: 65%;
+      width: 65%;
     }
 
     .infos {
