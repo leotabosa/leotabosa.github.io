@@ -16,6 +16,8 @@ export default {
             { nome: "HTML", cor: "#DD4C27" },
             { nome: "JavaScript", cor: "#D0B531" },
             { nome: "CSS", cor: "#48A4DA" },
+            { nome: "Jest" },
+            { nome: "Cypress.io" },
             { nome: "Webpack" },
             { nome: "Material Design" },
             { nome: "Element UI" },

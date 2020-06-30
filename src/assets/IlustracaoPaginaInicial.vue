@@ -205,9 +205,14 @@
     version="1.1"
     xmlns:xlink="http://www.w3.org/1999/xlink"
     xmlns:svgjs="http://svgjs.com/svgjs"
-    width="926.5"
-    height="490.5"
   >
+    <circle
+      cx="50%"
+      cy="44%"
+      r="34%"
+      fill="#3a477b"
+      shape-rendering="geometricPrecision"
+    />
     <g
       id="freepik--background-complete--inject-70"
       class="animable"
