@@ -40,7 +40,10 @@ export default {
               >
             </span>
             <span class="labelInfo">
-              Tempo: <span class="info">{{ cargo.tempo }}</span>
+              Tempo:
+              <span class="info"
+                >{{ cargo.tempo }} ({{ cargo.tempoRelativo }})</span
+              >
             </span>
             <span class="labelInfo">
               Projetos:

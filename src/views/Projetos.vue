@@ -7,7 +7,7 @@ export default {};
     <div class="carregando">
       <Loader />
 
-      <span>Em construção!</span>
+      <span>Ops, essa página ainda está em construção!</span>
     </div>
   </div>
 </template>
@@ -30,6 +30,7 @@ export default {};
 
     span {
       padding-top: 2rem;
+      color: var(--texto-principal);
     }
   }
 }

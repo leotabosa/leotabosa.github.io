@@ -1,7 +1,7 @@
 <script>
 import Repositorios from "./Repositorios";
 import ResumoProfissional from "./ResumoProfissional";
-import Tecnologias from "./Tecnologias";
+import Projetos from "./Projetos";
 import Curriculo from "../assets/Curriculo";
 import IconeTech from "../assets/IconeTech";
 import IconeRepo from "../assets/IconeRepo";
@@ -14,14 +14,14 @@ export default {
   components: {
     Repositorios,
     ResumoProfissional,
-    Tecnologias,
+    Projetos,
     Curriculo,
     IconeTech,
     IconeRepo,
   },
   data() {
     return {
-      opcoesAba: ["Resumo profissional", "Tecnologias", "Repositórios"],
+      opcoesAba: ["Resumo profissional", "Projetos", "Repositórios"],
       selecionada: "",
       repositorios: [],
       carregando: false,
@@ -61,7 +61,7 @@ export default {
         @click="mudaAba(item)"
       >
         <Curriculo v-if="item === 'Resumo profissional'" />
-        <IconeTech v-if="item === 'Tecnologias'" />
+        <IconeTech v-if="item === 'Projetos'" />
         <IconeRepo v-if="item === 'Repositórios'" />
         {{ item }}
       </div>
@@ -69,7 +69,7 @@ export default {
     <transition name="fade" mode="out-in">
       <ResumoProfissional v-if="selecionada === 'Resumo profissional'" />
 
-      <Tecnologias v-if="selecionada === 'Tecnologias'" />
+      <Projetos v-if="selecionada === 'Projetos'" />
 
       <Repositorios
         v-if="selecionada === 'Repositórios'"

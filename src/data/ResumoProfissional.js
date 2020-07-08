@@ -1,3 +1,9 @@
+import { formatDistanceStrict } from "date-fns";
+import pt from "date-fns/locale/pt-BR";
+
+const tempoRelativo = (dataInicio, dataFim) =>
+  formatDistanceStrict(dataInicio, dataFim, { locale: pt });
+
 const varejofacil = {
   nome: "varejofacil",
   descricao:
@@ -27,12 +33,17 @@ export default [
       {
         descricao: "Desenvolvedor front-end",
         tempo: "Julho de 2020 - Hoje",
+        tempoRelativo: tempoRelativo(new Date(2020, 6, 7), new Date()),
         atual: true,
         projetos: [varejofacil],
       },
       {
         descricao: "Estagiário front-end",
         tempo: "Julho de 2019 - Julho de 2020",
+        tempoRelativo: tempoRelativo(
+          new Date(2019, 6, 7),
+          new Date(2020, 6, 7)
+        ),
         atual: false,
         projetos: [varejofacil],
       },
