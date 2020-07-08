@@ -1,40 +1,12 @@
 <script>
 import Tooltip from "../components/Tooltip";
 import IconeGraduacao from "../assets/IconeGraduacao";
+import experiencias from "../data/ResumoProfissional";
 export default {
   components: { Tooltip, IconeGraduacao },
   data() {
     return {
-      experiencias: [
-        {
-          empresa: "Grupo Casa Magalhães",
-          cargo: "Estagiário",
-          tempo: "Julho de 2019 - Hoje",
-          atual: true,
-          tags: [
-            { nome: "Vue.js", cor: "#4BB37E" },
-            { nome: "HTML", cor: "#DD4C27" },
-            { nome: "JavaScript", cor: "#D0B531" },
-            { nome: "CSS", cor: "#48A4DA" },
-            { nome: "Jest" },
-            { nome: "Cypress.io" },
-            { nome: "Webpack" },
-            { nome: "Material Design" },
-            { nome: "Element UI" },
-            { nome: "SASS/SCSS" },
-          ],
-          descricaoEmpresa:
-            "Empresa cearense bem consolidada de soluções tecnológicas para ajudar companhias a superarem o complexo sistema tributário brasileiro e administrar melhor o negócio.",
-          projetos: [
-            {
-              nome: "varejofacil",
-              atual: true,
-              descricao:
-                "Solução voltada ao gerenciamento de empresas, mais adequada a supermercados, restaurantes e comércios de pequeno a médio porte. O front-end do projeto, já bem antigo e ultrapassado, está sendo modernizado com o framework Vue.js.",
-            },
-          ],
-        },
-      ],
+      experiencias,
       educacao: [
         {
           instituicao: "UFC - Universidade Federal do Ceará",
@@ -58,29 +30,40 @@ export default {
         </span>
         <section class="corpo">
           <span class="descricao">{{ item.descricaoEmpresa }}</span>
-          <span class="labelInfo">
-            Cargo: <span class="info">{{ item.cargo }}</span>
-          </span>
-          <span class="labelInfo">
-            Tempo: <span class="info">{{ item.tempo }}</span>
-          </span>
-          <span class="labelInfo">
-            Projetos:
-            <div v-for="(projeto, i) in item.projetos" :key="i" class="projeto">
-              <span class="nomeProjeto">{{ projeto.nome }} - </span>
-              <span>{{ projeto.descricao }}</span>
-              <div class="tags">
-                Tags:
-                <Tag
-                  v-for="(tag, ind) in item.tags"
-                  :key="ind"
-                  class="tag"
-                  :color="tag.cor"
-                  >{{ tag.nome }}
-                </Tag>
+          <div v-for="(cargo, ind) in item.cargos" :key="ind" class="cargos">
+            <span class="labelInfo cargo">
+              Cargo:
+              <span
+                :title="cargo.atual ? 'Cargo atual' : ''"
+                :class="[cargo.atual ? 'negrito' : '', 'info']"
+                >{{ cargo.descricao }}</span
+              >
+            </span>
+            <span class="labelInfo">
+              Tempo: <span class="info">{{ cargo.tempo }}</span>
+            </span>
+            <span class="labelInfo">
+              Projetos:
+              <div
+                v-for="(projeto, i) in cargo.projetos"
+                :key="i"
+                class="projeto"
+              >
+                <span class="nomeProjeto">{{ projeto.nome }} - </span>
+                <span>{{ projeto.descricao }}</span>
+                <div class="tags">
+                  Tags:
+                  <Tag
+                    v-for="(tag, indice) in projeto.tags"
+                    :key="indice"
+                    class="tag"
+                    :color="tag.cor"
+                    >{{ tag.nome }}
+                  </Tag>
+                </div>
               </div>
-            </div>
-          </span>
+            </span>
+          </div>
         </section>
       </li>
     </ul>
@@ -124,7 +107,6 @@ export default {
     flex-direction: column;
     margin-bottom: 2rem;
     width: calc(100vw - 90px);
-    padding-bottom: 1.2rem;
     &:not(:last-child) {
       border-bottom: 1px solid var(--cor-borda);
     }
@@ -148,12 +130,27 @@ export default {
         .info {
           color: var(--texto-principal);
         }
+
+        .negrito {
+          font-weight: bold;
+        }
       }
 
       .descricao {
         font-size: 16px;
         padding: 0.8rem 0;
         color: var(--texto-principal);
+      }
+
+      .cargos {
+        display: flex;
+        flex-direction: column;
+        padding-bottom: 20px;
+
+        .cargo {
+          padding-top: 20px;
+          border-top: 1px solid var(--cor-borda);
+        }
       }
 
       .projeto {
