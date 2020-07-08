@@ -13,6 +13,7 @@ const varejofacil = {
     { nome: "Material Design" },
     { nome: "Element UI" },
     { nome: "SASS/SCSS" },
+    { nome: "SQL Básico" },
   ],
 };
 
