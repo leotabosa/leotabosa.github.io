@@ -1,7 +1,9 @@
 <script>
 import ResumoProfissional from "../data/ResumoProfissional";
+import Tag from "./Tag";
 export default {
   name: "CurriculoSecaoEsquerda",
+  components: { Tag },
   data() {
     return {
       resumo: ResumoProfissional,
