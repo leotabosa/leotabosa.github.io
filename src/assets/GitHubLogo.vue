@@ -1,13 +1,14 @@
 <template>
   <svg
+    class="logo"
     id="Capa_1"
     version="1.1"
     xmlns="http://www.w3.org/2000/svg"
     xmlns:xlink="http://www.w3.org/1999/xlink"
     x="0px"
     y="0px"
-    width="438.549px"
-    height="438.549px"
+    width="16"
+    height="16"
     viewBox="0 0 438.549 438.549"
     style="enable-background:new 0 0 438.549 438.549;"
     xml:space="preserve"
@@ -38,3 +39,15 @@
     </g>
   </svg>
 </template>
+
+<style lang="scss" scoped>
+.logo {
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover {
+    transform: scale(1.05);
+    transition: all 0.2s ease;
+  }
+}
+</style>

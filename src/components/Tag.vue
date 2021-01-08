@@ -14,8 +14,9 @@ export default {
 
 <style scoped lang="scss">
 .tag {
-  border-radius: 6px;
-  padding: 0.5rem;
-  border: 1px solid #e0e0e0;
+  border-radius: 3px;
+  padding: 0.2rem 0.3rem;
+  border: 1px solid var(--cor-texto-6);
+  font-size: 13px;
 }
 </style>

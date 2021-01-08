@@ -1,13 +1,13 @@
 import { formatDistanceStrict } from "date-fns";
-import pt from "date-fns/locale/pt-BR";
+import enUS from "date-fns/locale/en-US";
 
 const tempoRelativo = (dataInicio, dataFim) =>
-  formatDistanceStrict(dataInicio, dataFim, { locale: pt });
+  formatDistanceStrict(dataInicio, dataFim, { locale: enUS });
 
 const varejofacil = {
   nome: "varejofacil",
   descricao:
-    "Solução voltada ao gerenciamento de empresas, mais adequada a supermercados, restaurantes e comércios de pequeno a médio porte. O front-end do projeto, já bem antigo e ultrapassado, está sendo modernizado com o framework Vue.js.",
+    "Nation-wide consolidated ERP, mainly focused on small/medium markets and restaurants / bars.",
   tags: [
     { nome: "Vue.js", cor: "#4BB37E" },
     { nome: "HTML", cor: "#DD4C27" },
@@ -19,7 +19,23 @@ const varejofacil = {
     { nome: "Material Design" },
     { nome: "Element UI" },
     { nome: "SASS/SCSS" },
-    { nome: "SQL Básico" },
+    { nome: "Basic SQL" },
+    { nome: "jQuery" },
+  ],
+};
+
+const designSystem = {
+  nome: "Casa Magalhães' design system",
+  descricao:
+    "Conception and development of Casa Magalhães' design system, entirely in Vue.js.",
+  tags: [
+    { nome: "Vue.js", cor: "#4BB37E" },
+    { nome: "HTML", cor: "#DD4C27" },
+    { nome: "JavaScript", cor: "#D0B531" },
+    { nome: "CSS", cor: "#48A4DA" },
+    { nome: "Jest" },
+    { nome: "Webpack" },
+    { nome: "Stylus" },
   ],
 };
 
@@ -28,18 +44,18 @@ export default [
     empresa: "Grupo Casa Magalhães",
     atual: true,
     descricaoEmpresa:
-      "Empresa cearense bem consolidada de soluções tecnológicas para ajudar companhias a superarem o complexo sistema tributário brasileiro e administrar melhor o negócio.",
+      "A well-consolidated company in Ceará - Brazil, with technological solutions to help companies overcome the complex Brazilian tax system and better manage the business.",
     cargos: [
       {
-        descricao: "Desenvolvedor front-end",
-        tempo: "Julho de 2020 - Hoje",
+        descricao: "Front-end developer",
+        tempo: "7/2020 - Today",
         tempoRelativo: tempoRelativo(new Date(2020, 6, 7), new Date()),
         atual: true,
-        projetos: [varejofacil],
+        projetos: [varejofacil, designSystem],
       },
       {
-        descricao: "Estagiário front-end",
-        tempo: "Julho de 2019 - Julho de 2020",
+        descricao: "Front-end intern",
+        tempo: "7/2019 - 6/2020",
         tempoRelativo: tempoRelativo(
           new Date(2019, 6, 7),
           new Date(2020, 6, 7)
