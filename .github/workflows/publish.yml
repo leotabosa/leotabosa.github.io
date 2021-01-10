@@ -11,6 +11,8 @@ jobs:
     - uses: actions/setup-node@v1
       with:
         node-version: '12.x'
-        always-auth: true
+        always-auth: false
     - name: Build and publish
       run: yarn publish
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
