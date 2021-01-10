@@ -12,7 +12,7 @@ export default {
       <span class="curriculo__cabecalho__label">Phone contact</span>
       <span class="curriculo__cabecalho__info">+55 (85) 997936988</span>
       <span class="curriculo__cabecalho__label">Email</span>
-      <span class="curriculo__cabecalho__info">leeonardotabosa@gmail.com</span>
+      <span class="curriculo__cabecalho__info">leonardoctbraga@gmail.com</span>
     </header>
     <section class="curriculo__corpo">
       <article class="curriculo__secao"><CurriculoSecaoEsquerda /></article>
