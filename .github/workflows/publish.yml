@@ -8,8 +8,9 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - uses: actions/setup-node@v1
-        with:
-          always-auth: true
+      - uses: actions/setup-node@v1
+      with:
+        node-version: '12.x'
+        always-auth: true
     - name: Build and publish
       run: yarn publish
