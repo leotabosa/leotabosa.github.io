@@ -13,8 +13,10 @@ export default {
   methods: {
     scrollTo(link) {
       const page = document.getElementById(link)
-      const y = page.offsetTop
-      window.scrollTo(0, y)
+      if (page) {
+        const y = page.offsetTop
+        window.scrollTo(0, y)
+      }
     },
   },
 }
