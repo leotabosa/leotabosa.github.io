@@ -11,7 +11,6 @@ export default {
   <header class="header">
     <PageTitle />
     <NavBar />
-    <Button>Me contrate</Button>
   </header>
 </template>
 
@@ -19,6 +18,5 @@ export default {
 .header {
   display: flex;
   align-items: center;
-  justify-content: space-between;
 }
 </style>

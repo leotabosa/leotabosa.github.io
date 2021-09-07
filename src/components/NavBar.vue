@@ -29,6 +29,9 @@ export default {
 
 <style lang="scss" scoped>
 .nav-bar {
+  display: flex;
+  justify-content: center;
+  width: 100%;
   user-select: none;
 
   &__list {

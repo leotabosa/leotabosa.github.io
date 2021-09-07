@@ -2,6 +2,14 @@
 import HomePageSVG from '../components/svg/HomePage.svg'
 export default {
   components: { HomePageSVG },
+  methods: {
+    downloadCV() {
+      window.open(
+        'https://drive.google.com/uc?export=download&id=1qWk608fvOBS3Kn-rX2uaF9fE_JNh0nOs',
+        '_blank'
+      )
+    },
+  },
 }
 </script>
 
@@ -10,7 +18,7 @@ export default {
     <div class="home__text">
       <h2 class="home__title">Oi, eu sou o Leonardo!</h2>
       <h4 class="home__subtitle">Um desenvolvedor front-end</h4>
-      <Button>Baixar CV</Button>
+      <Button @click="downloadCV">Baixar CV</Button>
     </div>
     <HomePageSVG class="home__illustration" />
   </section>

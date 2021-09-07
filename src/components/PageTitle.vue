@@ -15,6 +15,8 @@ export default {
 
 <style lang="scss" scoped>
 .page-title {
+  position: fixed;
+  top: 32px;
   display: flex;
   color: var(--text-color-1);
   user-select: none;

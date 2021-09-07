@@ -18,6 +18,8 @@ export default {
   <button
     class="button"
     :style="`background-color: ${bgColor}; color: ${textColor}`"
+    v-bind="$attrs"
+    v-on="$listeners"
   >
     <slot />
   </button>
