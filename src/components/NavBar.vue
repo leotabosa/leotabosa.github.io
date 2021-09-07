@@ -4,11 +4,18 @@ export default {
   data() {
     return {
       links: [
-        { label: 'Sobre mim', link: '' },
+        { label: 'Sobre mim', link: 'about-page' },
         { label: 'Projetos', link: '' },
         { label: 'Contatos', link: '' },
       ],
     }
+  },
+  methods: {
+    scrollTo(link) {
+      const page = document.getElementById(link)
+      const y = page.offsetTop
+      window.scrollTo(0, y)
+    },
   },
 }
 </script>
@@ -20,6 +27,7 @@ export default {
         v-for="({ link, label }, index) in links"
         :key="`${link}-${index}`"
         class="nav-bar__item"
+        @click="scrollTo(link)"
       >
         <a class="nav-bar__link" href="#" draggable="false">{{ label }}</a>
       </li>

@@ -1,6 +1,7 @@
 <script>
 import HomePageSVG from '../components/svg/HomePage.svg'
 export default {
+  name: 'Home',
   components: { HomePageSVG },
   methods: {
     downloadCV() {
@@ -28,10 +29,9 @@ export default {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 100%;
   align-self: center;
   width: 80%;
-  height: calc(100vh - 155px);
+  height: calc(100vh - 90px);
 
   @media screen and (max-width: 900px) {
     justify-content: center;

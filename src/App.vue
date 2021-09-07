@@ -1,9 +1,10 @@
 <script>
 import Header from './components/Header'
 import Home from './pages/Home.vue'
+import About from './pages/About.vue'
 export default {
   name: 'App',
-  components: { Header, Home },
+  components: { Header, Home, About },
 }
 </script>
 
@@ -12,6 +13,7 @@ export default {
     <Header />
     <main class="app__main">
       <Home />
+      <About />
     </main>
   </div>
 </template>
@@ -23,7 +25,7 @@ export default {
   font-family: 'Inter', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  padding: 64px 32px;
+  padding: 64px 32px 0;
 }
 
 .app {
