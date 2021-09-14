@@ -6,7 +6,7 @@ export default {
       links: [
         { label: 'Sobre mim', link: 'about-page' },
         { label: 'Projetos', link: '' },
-        { label: 'Contatos', link: '' },
+        { label: 'Contatos', link: 'contacts-page' },
       ],
     }
   },

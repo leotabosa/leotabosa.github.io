@@ -1,14 +1,16 @@
 <script>
 import Avatar from '../components/Avatar.vue'
+import SectionTitle from '../components/SectionTitle.vue'
+
 export default {
   name: 'About',
-  components: { Avatar },
+  components: { Avatar, SectionTitle },
 }
 </script>
 
 <template>
   <section id="about-page" class="about">
-    <h3 class="about__title"> Sobre mim</h3>
+    <SectionTitle section-title="Sobre mim" />
     <div class="about__content">
       <article class="about__text">
         <p>
@@ -36,26 +38,23 @@ export default {
   align-self: center;
   width: 80%;
 
-  @media screen and (max-width: 900px) {
-    flex-direction: column-reverse;
-  }
-
-  &__title {
-    font-size: 16px;
-    color: var(--text-color-2);
-    text-align: center;
-    padding-bottom: 150px;
-  }
-
   &__content {
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    @media screen and (max-width: 900px) {
+      flex-direction: column-reverse;
+    }
   }
 
   &__text {
     width: 60%;
     color: var(--text-color-1);
+
+    @media screen and (max-width: 900px) {
+      width: 100%;
+    }
   }
 
   &__avatar {
@@ -63,6 +62,11 @@ export default {
 
     @media screen and (max-width: 900px) {
       padding: 0 0 20px;
+
+      figure {
+        height: 200px;
+        width: 200px;
+      }
     }
   }
 }

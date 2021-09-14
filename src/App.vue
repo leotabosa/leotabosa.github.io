@@ -1,10 +1,11 @@
 <script>
 import Header from './components/Header'
 import Home from './pages/Home.vue'
+import Contacts from './pages/Contacts.vue'
 import About from './pages/About.vue'
 export default {
   name: 'App',
-  components: { Header, Home, About },
+  components: { Header, Home, About, Contacts },
 }
 </script>
 
@@ -14,6 +15,7 @@ export default {
     <main class="app__main">
       <Home />
       <About />
+      <Contacts />
     </main>
   </div>
 </template>

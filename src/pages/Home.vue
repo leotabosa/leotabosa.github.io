@@ -19,7 +19,7 @@ export default {
     <div class="home__text">
       <h2 class="home__title">Oi, eu sou o Leonardo!</h2>
       <h4 class="home__subtitle">Um desenvolvedor front-end</h4>
-      <Button @click="downloadCV">Baixar CV</Button>
+      <Button size="lg" @click="downloadCV">Baixar CV</Button>
     </div>
     <HomePageSVG class="home__illustration" />
   </section>

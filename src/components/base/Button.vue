@@ -10,6 +10,13 @@ export default {
       type: String,
       default: () => '',
     },
+    size: {
+      type: String,
+      default: () => 'md',
+      validator: (value) => {
+        return ['md', 'lg'].includes(value)
+      },
+    },
   },
 }
 </script>
@@ -18,6 +25,7 @@ export default {
   <button
     class="button"
     :style="`background-color: ${bgColor}; color: ${textColor}`"
+    :class="{ 'button--lg': size === 'lg' }"
     v-bind="$attrs"
     v-on="$listeners"
   >
@@ -31,18 +39,31 @@ export default {
   color: white;
   outline: none;
   border: none;
-  padding: 18px 24px;
+  min-width: 150px;
+  padding: 12px 16px;
   border-radius: 8px;
-  font-size: 20px;
+  font-size: 16px;
   transition: all 0.2s ease;
   cursor: pointer;
   user-select: none;
 
   &:hover,
   &:focus-within {
-    background-color: var(--color-2);
-    box-shadow: 3px 3px 6px #00000029;
-    transition: all 0.2s ease;
+    &:not([disabled]) {
+      background-color: var(--color-2);
+      box-shadow: 3px 3px 6px #00000029;
+      transition: all 0.2s ease;
+    }
+  }
+
+  &--lg {
+    padding: 18px 24px;
+    font-size: 20px;
+  }
+
+  &[disabled] {
+    opacity: 0.5;
+    cursor: not-allowed;
   }
 }
 </style>
