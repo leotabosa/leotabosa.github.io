@@ -19,7 +19,7 @@ export default {
   font-size: 16px;
   color: var(--text-color-2);
   text-align: center;
-  padding-bottom: 150px;
+  padding-bottom: 80px;
 
   @media screen and (max-width: 900px) {
     padding-bottom: 25px;

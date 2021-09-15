@@ -18,6 +18,15 @@ export default {
       type: String,
       default: () => '',
     },
+    buttonLink: {
+      type: String,
+      default: () => '',
+    },
+  },
+  methods: {
+    openInNewTab() {
+      window.open(this.buttonLink, '_blank')
+    },
   },
 }
 </script>
@@ -32,10 +41,46 @@ export default {
       <p class="social-card__subtitle">{{ cardSubtitle }} </p>
     </header>
 
-    <footer>
-      <Button>{{ buttonText }} </Button>
+    <footer v-if="buttonText" class="social-card__footer">
+      <slot name="button">
+        <Button @click="openInNewTab">{{ buttonText }} </Button>
+      </slot>
     </footer>
   </article>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.social-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 180px;
+
+  &__title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    svg {
+      min-width: 24px;
+    }
+
+    h5 {
+      word-break: break-all;
+      margin: 0;
+      font-size: 24px;
+      font-weight: normal;
+    }
+  }
+
+  &__subtitle {
+    margin: 5px 0 0 0;
+    color: var(--text-color-3);
+  }
+
+  &__footer {
+    display: flex;
+    justify-content: flex-end;
+  }
+}
+</style>

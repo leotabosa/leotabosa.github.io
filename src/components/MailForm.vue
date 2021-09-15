@@ -48,7 +48,11 @@ export default {
       <p>Sinta-se livre para me enviar um email!</p>
     </div>
     <div class="mail-form__basic">
-      <Input v-model="mailForm.fromName" placeholder="Nome" />
+      <Input
+        id="nameFieldMailForm"
+        v-model="mailForm.fromName"
+        placeholder="Nome"
+      />
       <Input
         v-model="mailForm.fromEmail"
         placeholder="Seu email"
