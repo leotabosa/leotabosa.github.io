@@ -102,6 +102,17 @@ export default {
         width: 60%;
       }
     }
+
+    @media screen and (max-width: 900px) {
+      flex-direction: column;
+      input {
+        width: 100%;
+
+        &:first-child {
+          width: 100%;
+        }
+      }
+    }
   }
 
   &__textarea {

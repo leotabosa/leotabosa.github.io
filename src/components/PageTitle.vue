@@ -8,7 +8,7 @@ export default {
 </script>
 <template>
   <header class="page-title">
-    <Logo />
+    <Logo class="page-title__logo" />
     <h1 class="page-title__text">Leonardo Braga</h1>
   </header>
 </template>
@@ -20,6 +20,10 @@ export default {
   display: flex;
   color: var(--text-color-1);
   user-select: none;
+
+  @media screen and (max-width: 550px) {
+    display: none;
+  }
 
   &__text {
     font-size: 24px;
