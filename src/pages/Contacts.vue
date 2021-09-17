@@ -16,6 +16,12 @@ export default {
     GithubLogo,
     MailIcon,
   },
+  props: {
+    texts: {
+      type: Object,
+      default: () => ({}),
+    },
+  },
   methods: {
     openInNewTab(url) {
       window.open(url, '_blank')
@@ -30,7 +36,7 @@ export default {
 
 <template>
   <section id="contacts-page" class="contacts">
-    <SectionTitle section-title="Contatos" />
+    <SectionTitle :section-title="texts.contacts" />
 
     <div class="contacts__content">
       <section class="contacts__links">
@@ -50,7 +56,7 @@ export default {
                 openInNewTab('https://www.linkedin.com/in/leonardo-tabosa/')
               "
             >
-              Conectar
+              {{ texts.connect }}
             </Button>
           </template>
         </SocialCard>
@@ -68,7 +74,7 @@ export default {
               class="contacts__github-button"
               @click="openInNewTab('https://github.com/leotabosa')"
             >
-              Seguir
+              {{ texts.follow }}
             </Button>
           </template>
         </SocialCard>
@@ -82,12 +88,12 @@ export default {
           </template>
 
           <template v-slot:button>
-            <Button @click="focusMailForm">Mensagem</Button>
+            <Button @click="focusMailForm">{{ texts.message }}</Button>
           </template>
         </SocialCard>
       </section>
       <article class="contacts__email-form">
-        <MailForm />
+        <MailForm :texts="texts" />
       </article>
     </div>
   </section>

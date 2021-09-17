@@ -5,12 +5,18 @@ import NavBar from './NavBar.vue'
 export default {
   name: 'Header',
   components: { NavBar, PageTitle },
+  props: {
+    texts: {
+      type: Object,
+      default: () => ({}),
+    },
+  },
 }
 </script>
 <template>
   <header class="header">
     <PageTitle />
-    <NavBar />
+    <NavBar :texts="texts" />
   </header>
 </template>
 

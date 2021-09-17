@@ -5,26 +5,33 @@ import SectionTitle from '../components/SectionTitle.vue'
 export default {
   name: 'About',
   components: { Avatar, SectionTitle },
+  props: {
+    texts: {
+      type: Object,
+      default: () => ({}),
+    },
+  },
+  watch: {
+    texts: {
+      immediate: true,
+      deep: true,
+      handler({ aboutText }) {
+        this.$nextTick(() => {
+          const paragraph = document.getElementById('about-text')
+          if (paragraph) paragraph.innerHTML = aboutText
+        })
+      },
+    },
+  },
 }
 </script>
 
 <template>
   <section id="about-page" class="about">
-    <SectionTitle section-title="Sobre mim" />
+    <SectionTitle :section-title="texts.aboutMe" />
     <div class="about__content">
       <article class="about__text">
-        <p>
-          Sou desenvolvedor especializado em <strong>front-end</strong> desde o
-          início da carreira, aos 18 anos. Estou me graduando em
-          <strong>Ciências da Computação</strong> pela Universidade Federal do
-          Ceará - <strong>UFC</strong>.
-          <br />
-          <br />
-          Planejar e executar soluções costuma ser o meu forte, e, apesar de
-          acreditar que todos precisam resolver bugs, gosto de pensar que minha
-          <strong>visão</strong> de código vai
-          <strong>além de um bug por vez</strong>.
-        </p>
+        <p id="about-text" />
       </article>
       <article class="about__avatar">
         <Avatar />

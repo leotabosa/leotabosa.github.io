@@ -3,19 +3,33 @@ import Header from './components/Header'
 import Home from './pages/Home.vue'
 import Contacts from './pages/Contacts.vue'
 import About from './pages/About.vue'
+import LanguageSwitcher from './components/LanguageSwitcher.vue'
+import langPTBR from './assets/lang.ptbr'
+import langEN from './assets/lang.en'
+
 export default {
   name: 'App',
-  components: { Header, Home, About, Contacts },
+  components: { Header, Home, About, Contacts, LanguageSwitcher },
+  data() {
+    return {
+      language: 'en',
+      texts: {
+        ptbr: langPTBR,
+        en: langEN,
+      },
+    }
+  },
 }
 </script>
 
 <template>
   <div id="app">
-    <Header />
+    <LanguageSwitcher :lang="language" @change-language="language = $event" />
+    <Header :texts="texts[language]" />
     <main class="app__main">
-      <Home />
-      <About />
-      <Contacts />
+      <Home :texts="texts[language]" />
+      <About :texts="texts[language]" />
+      <Contacts :texts="texts[language]" />
     </main>
   </div>
 </template>

@@ -5,6 +5,12 @@ import sendMail from '../utils/send-mail'
 export default {
   name: 'MailForm',
   components: { MailboxSVG },
+  props: {
+    texts: {
+      type: Object,
+      default: () => ({}),
+    },
+  },
   data() {
     return {
       mailForm: {
@@ -45,17 +51,17 @@ export default {
   <form class="mail-form" autocomplete="off" @submit.prevent="sendEmail">
     <div class="mail-form__header">
       <MailboxSVG />
-      <p>Sinta-se livre para me enviar um email!</p>
+      <p>{{ texts.mailFormText }}</p>
     </div>
     <div class="mail-form__basic">
       <Input
         id="nameFieldMailForm"
         v-model="mailForm.fromName"
-        placeholder="Nome"
+        :placeholder="texts.name"
       />
       <Input
         v-model="mailForm.fromEmail"
-        placeholder="Seu email"
+        :placeholder="texts.yourMail"
         :error="!validEmail"
         @input="validateEmail"
       />
@@ -63,12 +69,12 @@ export default {
     <Input
       v-model="mailForm.message"
       class="mail-form__textarea"
-      placeholder="Mensagem"
+      :placeholder="texts.message"
       type="textarea"
     />
     <div class="mail-form__button">
       <Button type="submit" size="md" :disabled="!sendButtonAllowed">
-        Enviar
+        {{ texts.send }}
       </Button>
     </div>
   </form>

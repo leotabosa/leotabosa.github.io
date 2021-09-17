@@ -3,6 +3,13 @@ import HomePageSVG from '../components/svg/HomePage.svg'
 export default {
   name: 'Home',
   components: { HomePageSVG },
+  props: {
+    texts: {
+      type: Object,
+      default: () => ({}),
+    },
+  },
+
   methods: {
     downloadCV() {
       window.open(
@@ -17,9 +24,11 @@ export default {
 <template>
   <section class="home">
     <div class="home__text">
-      <h2 class="home__title">Oi, eu sou o Leonardo!</h2>
-      <h4 class="home__subtitle">Um desenvolvedor front-end</h4>
-      <Button size="lg" @click="downloadCV">Baixar CV</Button>
+      <h2 class="home__title">{{ texts.greeting }}</h2>
+      <h4 class="home__subtitle">{{ texts.homeSubtitle }}</h4>
+      <Button size="lg" @click="downloadCV">
+        {{ texts.homeButton }}
+      </Button>
     </div>
     <HomePageSVG class="home__illustration" />
   </section>

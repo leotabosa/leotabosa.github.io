@@ -1,14 +1,20 @@
 <script>
 export default {
   name: 'NavBar',
-  data() {
-    return {
-      links: [
-        { label: 'Sobre mim', link: 'about-page' },
-        { label: 'Projetos', link: '' },
-        { label: 'Contatos', link: 'contacts-page' },
-      ],
-    }
+  props: {
+    texts: {
+      type: Object,
+      default: () => ({}),
+    },
+  },
+  computed: {
+    links() {
+      return [
+        { label: this.texts.aboutMe, link: 'about-page' },
+        { label: this.texts.projects, link: '' },
+        { label: this.texts.contacts, link: 'contacts-page' },
+      ]
+    },
   },
   methods: {
     scrollTo(link) {
