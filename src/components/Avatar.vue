@@ -8,7 +8,7 @@ export default {}
       width="100%"
       height="100%"
       alt="Foto de Leonardo Braga olhando para a câmera debaixo de bastante sol. Tem um pouco de barba, cabelo cacheado, usa óculos e uma blusa branca"
-      src="../assets/photo_2021-08-04_22-05-29.jpg"
+      src="../assets/avatar.jpeg"
     />
   </figure>
 </template>
